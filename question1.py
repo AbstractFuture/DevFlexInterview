@@ -1,17 +1,13 @@
 def select_max(array):
-    # write your function here
-    # do NOT use the built-in max() function
-    current_max = 0
-    if select_max() == False:
-        return None
+    my_max = 0
+    if array: # checking if array has any values or is null
+        my_max = array[0] # using first element of array as our starting point
+        for i in array:
+            if i >= my_max:
+                my_max = i
     else:
-        for i in select_max():
-            if i > current_max :
-                current_max = i
-        print(current_max)
-
-
-    #pass
+        my_max = None
+    return my_max
 
 
 if __name__ == "__main__":

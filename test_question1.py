@@ -23,6 +23,3 @@ def test_5():
 
 def test_6():
     assert select_max([]) == None
-
-
-
