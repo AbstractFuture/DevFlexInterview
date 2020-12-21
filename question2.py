@@ -6,14 +6,21 @@ def center_zeros(array):
     # center means the floor(x / 2) where floor means rounding a float (decimal number) down to the nearest integer
     # i.e. floor(1) = 1, floor(1.5) = 1, floor(1.75) = 1, floor(2) = 2
     arr_len = len(array)
-    if array: # checking if array is empty
+    print(array)
+    if array: # checking if array evaluates to True, else return None type
         for i in array:
-            if (i == 0) and (array[:i] == floor(arr_len / 2)): # not sure if array[:i] returns an int or the value of the element
-                pass
+            if (array[i] == 0): # if element in array is zero;
+                print(array)
+                array.pop(i)
+                print(array)
+                array.insert((floor(arr_len / 2)), 0)
+                return(array)
     else:
         return []
 
 
 if __name__ == "__main__":
-    # write your debug code here
     pass
+
+print(center_zeros([1, 1, 3, 0, 6, 0]))
+#[1, 1, 0, 0, 3, 6]
