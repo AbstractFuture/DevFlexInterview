@@ -1,7 +1,7 @@
 from math import floor
 
 
-def center_zeros(array):
+def center_zeros1(array):
     # write your function here
     # center means the floor(x / 2) where floor means rounding a float (decimal number) down to the nearest integer
     # i.e. floor(1) = 1, floor(1.5) = 1, floor(1.75) = 1, floor(2) = 2
@@ -10,14 +10,45 @@ def center_zeros(array):
     if array: # checking if array evaluates to True, else return None type
         for i in array:
             if (array[i] == 0): # if element in array is zero;
-                print(array)
                 array.pop(i)
-                print(array)
                 array.insert((floor(arr_len / 2)), 0)
-                return(array)
+                return(array) # this is insufficient because there may be more than one zero in the array
     else:
         return []
 
+
+
+def center_zeros(array): # test to strip out all zeroes from list
+    if array: # checking if array evaluates to True, else return None type
+        arr_len = len(array)
+        zero_count = array.count(0)
+        loop_count = 0
+        zero_arr = array.copy()
+        while loop_count < zero_count:
+            for i in range(arr_len):
+                if zero_arr[i] == 0 and (len(zero_arr) % 2 == 0): 
+                    # if iterable is a zero and length of array is even
+                    print(zero_arr)
+                    zero_arr.pop(i)
+                    print(zero_arr)
+                    zero_arr.insert(floor((arr_len / 2) -1 ), 0)
+                    #zero_arr.insert(floor((arr_len / 2)-1), 0)
+                    print(zero_arr)
+                    loop_count += 1
+                elif zero_arr[i] == 0 and (len(zero_arr) % 2 == 1): 
+                    # if iterable is a zero and length of array is odd
+                    print(zero_arr)
+                    zero_arr.pop(i)
+                    print(zero_arr)
+                    zero_arr.insert(floor(len(zero_arr) / 2), 0)
+                    #zero_arr.insert(floor((arr_len / 2)-1), 0)
+                    print(zero_arr)
+                    loop_count += 1
+                else:
+                    pass
+        return(zero_arr)
+    else:
+        return []
 
 if __name__ == "__main__":
     pass
