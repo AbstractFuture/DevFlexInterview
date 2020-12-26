@@ -26,23 +26,19 @@ def center_zeros(array): # test to strip out all zeroes from list
         zero_arr = array.copy()
         while loop_count < zero_count:
             for i in range(arr_len):
-                if zero_arr[i] == 0 and (len(zero_arr) % 2 == 0): 
-                    # if iterable is a zero and length of array is even
-                    print(zero_arr)
+                #print(zero_arr)
+                if zero_arr[i] == 0:
+                    #print(zero_arr)
                     zero_arr.pop(i)
-                    print(zero_arr)
-                    zero_arr.insert(floor((arr_len / 2) -1 ), 0)
-                    #zero_arr.insert(floor((arr_len / 2)-1), 0)
-                    print(zero_arr)
-                    loop_count += 1
-                elif zero_arr[i] == 0 and (len(zero_arr) % 2 == 1): 
-                    # if iterable is a zero and length of array is odd
-                    print(zero_arr)
-                    zero_arr.pop(i)
-                    print(zero_arr)
-                    zero_arr.insert(floor(len(zero_arr) / 2), 0)
-                    #zero_arr.insert(floor((arr_len / 2)-1), 0)
-                    print(zero_arr)
+                    #print(zero_arr)
+                    if (arr_len % 2 == 0):
+                        #print(zero_arr)
+                        zero_arr.insert(floor(((arr_len)/2)-1), 0)
+                        #print(zero_arr)
+                    else: # if elements in array are odd
+                        #print(zero_arr)
+                        zero_arr.insert(floor(arr_len/2), 0)
+                        #print(zero_arr)
                     loop_count += 1
                 else:
                     pass
