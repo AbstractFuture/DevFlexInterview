@@ -1,7 +1,7 @@
 from math import floor
 
 
-def center_zeros1(array):
+def center_zeros1(array): # function this is insufficient because there may be more than one zero in the array
     # write your function here
     # center means the floor(x / 2) where floor means rounding a float (decimal number) down to the nearest integer
     # i.e. floor(1) = 1, floor(1.5) = 1, floor(1.75) = 1, floor(2) = 2
@@ -12,7 +12,7 @@ def center_zeros1(array):
             if (array[i] == 0): # if element in array is zero;
                 array.pop(i)
                 array.insert((floor(arr_len / 2)), 0)
-                return(array) # this is insufficient because there may be more than one zero in the array
+                return(array) 
     else:
         return []
 
@@ -26,19 +26,22 @@ def center_zeros(array): # test to strip out all zeroes from list
         zero_arr = array.copy()
         while loop_count < zero_count:
             for i in range(arr_len):
-                #print(zero_arr)
-                if zero_arr[i] == 0:
-                    #print(zero_arr)
+                print(zero_arr)
+                if zero_arr[i] == 0: # if value at index i equals 0
+                    print(zero_arr)
                     zero_arr.pop(i)
-                    #print(zero_arr)
-                    if (arr_len % 2 == 0):
-                        #print(zero_arr)
-                        zero_arr.insert(floor(((arr_len)/2)-1), 0)
-                        #print(zero_arr)
-                    else: # if elements in array are odd
-                        #print(zero_arr)
-                        zero_arr.insert(floor(arr_len/2), 0)
-                        #print(zero_arr)
+                    # shift zero one space left
+                    # still need to evaluate if new zero is at floor division position
+                    zero_arr.insert((i - 1), 0)
+                    print(zero_arr)
+                    if zero_array[floor(len(zero_array)/2)] == 0:
+                        pass
+                    else:
+                        #maybe use recursion? make variables global variables
+                        # otherwise they'll reset when function is called recursively
+                    # then evaluate if it is in the correct space
+                    # this approach differs from trying to insert it at the floor divide position
+
                     loop_count += 1
                 else:
                     pass
@@ -51,3 +54,9 @@ if __name__ == "__main__":
 
 print(center_zeros([1, 1, 3, 0, 6, 0]))
 #[1, 1, 0, 0, 3, 6]
+
+print('\n')
+print('\n')
+print('\n')
+
+print(center_zeros([1, 1, 3, 0]))
