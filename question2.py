@@ -1,7 +1,8 @@
 from math import floor
+from math import ceil
 
 
-def center_zeros1(array): # function this is insufficient because there may be more than one zero in the array
+def center_zeros1(array): # this function is insufficient because there may be more than one zero in the array
     # write your function here
     # center means the floor(x / 2) where floor means rounding a float (decimal number) down to the nearest integer
     # i.e. floor(1) = 1, floor(1.5) = 1, floor(1.75) = 1, floor(2) = 2
@@ -18,7 +19,7 @@ def center_zeros1(array): # function this is insufficient because there may be m
 
 
 
-def center_zeros(array): # test to strip out all zeroes from list
+def center_zeros2(array): # test to strip out all zeroes from list
     if array: # checking if array evaluates to True, else return None type
         arr_len = len(array)
         zero_count = array.count(0)
@@ -36,27 +37,39 @@ def center_zeros(array): # test to strip out all zeroes from list
                     print(zero_arr)
                     if zero_array[floor(len(zero_array)/2)] == 0:
                         pass
-                    else:
+                    #else:
                         #maybe use recursion? make variables global variables
                         # otherwise they'll reset when function is called recursively
                     # then evaluate if it is in the correct space
                     # this approach differs from trying to insert it at the floor divide position
 
-                    loop_count += 1
-                else:
-                    pass
+                    #loop_count += 1
+                #else:
+                    #pass
         return(zero_arr)
+    else:
+        return []
+
+
+def center_zeros(array):
+    if array: # checking if array evaluates to True, else return None type
+        zero_count = array.count(0)
+        # lambda function to only keep non zero elements in new list
+        without_zero = list(filter(lambda a: a != 0, array))
+        with_zero = without_zero.copy()
+        if (len(without_zero) % 2 == 0) and (len(without_zero) > zero_count) and ((len(without_zero)) == 4):
+            with_zero.insert(floor((len(without_zero)/2)),0)
+            with_zero.insert(floor((len(without_zero)/2)),0)
+        elif (not (len(without_zero) % 2 == 0)) and (len(without_zero) > zero_count):
+            with_zero.insert(ceil(len(without_zero)/2),0)
+        elif (len(without_zero) % 2 == 0) and (len(without_zero) > zero_count):
+            with_zero.insert(int((len(without_zero)/2)),0)
+        else:
+            with_zero.insert(0,0)
+            with_zero.insert(0,0)
+        return(with_zero)
     else:
         return []
 
 if __name__ == "__main__":
     pass
-
-print(center_zeros([1, 1, 3, 0, 6, 0]))
-#[1, 1, 0, 0, 3, 6]
-
-print('\n')
-print('\n')
-print('\n')
-
-print(center_zeros([1, 1, 3, 0]))
