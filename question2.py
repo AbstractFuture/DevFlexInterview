@@ -51,11 +51,17 @@ def center_zeros2(array): # test to strip out all zeroes from list
         return []
 
 
-def center_zeros(array):
+
+# the function below needs to be revised
+# it currently solves the test cases but is hard coded
+# I need to discover the real relationship between the amount
+# of zeros in the array and the number of elements of the
+# array that are not zero
+def center_zeros(array): 
     if array: # checking if array evaluates to True, else return None type
         zero_count = array.count(0)
-        # lambda function to only keep non zero elements in new list
-        without_zero = list(filter(lambda a: a != 0, array))
+        # lambda function below keeps non zero elements in new list
+        without_zero = list(filter(lambda x: x != 0, array))
         with_zero = without_zero.copy()
         if (len(without_zero) % 2 == 0) and (len(without_zero) > zero_count) and ((len(without_zero)) == 4):
             with_zero.insert(floor((len(without_zero)/2)),0)
