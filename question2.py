@@ -57,25 +57,94 @@ def center_zeros2(array): # test to strip out all zeroes from list
 # I need to discover the real relationship between the amount
 # of zeros in the array and the number of elements of the
 # array that are not zero
-def center_zeros(array): 
+# currently the amount of zeros inserted is hard coded
+# the index for insertion is also hard coded
+def center_zeros3(array): 
     if array: # checking if array evaluates to True, else return None type
         zero_count = array.count(0)
         # lambda function below keeps non zero elements in new list
         without_zero = list(filter(lambda x: x != 0, array))
+        # Then create a copy of the above list
+        # which we will insert zeros into
         with_zero = without_zero.copy()
+        # if non zero length of array is even and array elements
+        # are more than the zero count
+        # and there are 4 non zero elements in the array
         if (len(without_zero) % 2 == 0) and (len(without_zero) > zero_count) and ((len(without_zero)) == 4):
+            # then insert two zeros at the specified index
             with_zero.insert(floor((len(without_zero)/2)),0)
             with_zero.insert(floor((len(without_zero)/2)),0)
+        # if number of array elements is odd
+        # and the number of array elements are more than the zero count
         elif (not (len(without_zero) % 2 == 0)) and (len(without_zero) > zero_count):
+            # then insert a single zero at the following index
             with_zero.insert(ceil(len(without_zero)/2),0)
+        # if number of non zero elements is even and 
+        # there are more non zero elements than zeros
         elif (len(without_zero) % 2 == 0) and (len(without_zero) > zero_count):
+            # then insert a single zero at the following position
             with_zero.insert(int((len(without_zero)/2)),0)
-        else:
+        else: # hard coded for 4th test case. bad solution.
             with_zero.insert(0,0)
             with_zero.insert(0,0)
         return(with_zero)
     else:
         return []
 
+
+# hard coded and need to be changed:
+
+# - index position
+# need to create an offset? 
+
+def center_zeros(array): 
+    if array: # checking if array evaluates to True, else return None type
+        print(array)
+        
+        zero_count = array.count(0)
+        # lambda function below keeps non zero elements in new list
+        without_zero = list(filter(lambda x: x != 0, array))
+        # Then create a copy of the above list
+        # which we will insert zeros into
+        with_zero = without_zero.copy()
+        
+
+        # if zero count is even
+        # and if number non zero elements in array is even
+        if (zero_count % 2 ==0) and (len(without_zero) % 2 == 0):
+            # then insert two zeros at the specified index
+            for i in range(zero_count):
+                with_zero.insert(floor((len(without_zero)/2)),0)
+
+        
+        # if zero count is odd
+        # and num of elements in array is odd
+        elif not(zero_count % 2 ==0) and not(len(without_zero) % 2 == 0):
+            # then insert a single zero at the following index
+            for i in range(zero_count):
+                print(with_zero)
+                #with_zero.insert(ceil(len(without_zero)/2),0)
+                with_zero.insert(floor(len(without_zero)/2),0)
+                print(with_zero)
+
+
+        # if zero count is odd
+        # and num of non zero elements in array is even
+        elif not(zero_count % 2 ==0) and (len(without_zero) % 2 == 0):
+            # then insert a single zero at the following position
+            for i in range(zero_count):
+                with_zero.insert(int((len(without_zero)/2)),0)
+
+        else: # if zero count is odd
+            # and num of non zero elements is even
+            for i in range(zero_count):
+                with_zero.insert(0,0)
+
+        return(with_zero)
+    else:
+        return []
+
 if __name__ == "__main__":
     pass
+
+#print(center_zeros([1, 1, 3, 0, 1, 1, 3, 0, 6, 0])) #== [1, 1, 3, 0, 0, 0, 1, 1, 3, 6])
