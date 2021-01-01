@@ -4,8 +4,7 @@ from math import floor
 
 def center_zeros(array): 
     if array: # checking if array evaluates to True, else return None type
-
-        #print(array)        
+    
         zero_count = array.count(0)
         # lambda function below keeps non zero elements in new list
         without_zero = list(filter(lambda x: x != 0, array))
