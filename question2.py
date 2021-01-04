@@ -21,17 +21,14 @@ def center_zeros(array):
                 with_zero.insert(index,0)
             return(with_zero)
 
-        
         # if zero count is odd
         # and num of non zero elements in array is odd
         elif not(zero_count % 2 ==0) and not(len(without_zero) % 2 == 0):
             # then insert zeros at the following index
             for i in range(zero_count):
                 index = floor(len(with_zero)/2)
-                offset = 1
                 with_zero.insert((index + 1),0)
             return(with_zero)
-
 
         # if zero count is odd
         # and num of non zero elements in array is even
