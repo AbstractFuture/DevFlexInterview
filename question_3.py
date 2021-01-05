@@ -1,8 +1,40 @@
 def minimum_points(threshold, points):
+    min_point = points[0]
+    current_sum = 0
+    # if sum of points between points[0] and current iterable is greater than threshold
+    # store and return the number of elements summed as the answer
+    # since it is possible to solve i + 1 or i + 2, i can use modulus to determine min points
+
+
+    # if there is only a single point and it is smaller than the threshold
+    # immediately return that student must solve all (1) questions
+    if (len(points) == 1): #and (threshold > points[0]):
+        return 1
+    
+    # if points array has more than one element in it
+    elif (len(points) == 2):
+        return 2
+
+    else: # if points array has 3 or more elements in it
+        for i in points:
+            current_sum = current_sum + i
+            print("Current sum is: ", current_sum)
+        
+
+
+    #for i in range(len(points)):
+    #    print(points[i])
+    #    print(points[i] + 1)
+
+    #return min_point
+
 # a. They must always solve the first problem, index i = 0
  
 # b. After solving the i-th problem, they have a choice: solve the next problem (i + 1) or skip ahead and work the (i + 2)
 #  problem.
+
+# does this mean I need to create a sum of all permutations of the points based on b's criteria?
+# I need to loop through the points array and calculate if threshold has been reached
  
 # c. Students must keep solving problems until the difference between the maximum points and the minimum points questions
 #  solved so far meets or exceeds a specified threshold
@@ -21,5 +53,7 @@ def minimum_points(threshold, points):
 
 
 if __name__ == "__main__":
-    # write your debug code here
+
     pass
+
+print(minimum_points(2, [1, 2, 3]))
